@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Licuadora Revoltosa Mixadora Mágica de Temas Skinner</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Tipografía display retro-gruesa y geométrica legible -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-outer: #F2DCD6;
+      --bg-paper: #FAF6EE;
+      --espresso: #3A2618;
+      --terracotta: #DE6834;
+      --mustard: #B28524;
+      --mustard-light: #C69B36;
+      --lavender: #B7C9EE;
+      --lavender-soft: #C8D7F5;
+      --lilac: #E6BFE7;
+      --acid-lime: #E9F75E;
+      --skinner-navy: #16305C;
+      --skinner-red: #C82333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-outer);
+      color: var(--espresso);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Tipografía Display Gruesa estilo Retro-Modern */
+    .font-display {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    .font-groovy {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    /* Contenedor Editorial Central */
+    .editorial-sheet {
+      background-color: var(--bg-paper);
+      box-shadow: 0 24px 60px rgba(58, 38, 24, 0.12);
+    }
+
+    /* Marcadores tipo píldora en el título */
+    .highlight-lilac {
+      background-color: var(--lilac);
+      padding: 0.05em 0.35em;
+      border-radius: 14px;
+      display: inline-block;
+      line-height: 1.08;
+    }
+
+    .highlight-lavender {
+      background-color: var(--lavender-soft);
+      padding: 0.05em 0.35em;
+      border-radius: 14px;
+      display: inline-block;
+      line-height: 1.08;
+    }
+
+    /* Divisores horizontales tipo tablero de ajedrez (Checkerboard Borders) */
+    .checkerboard-mustard {
+      height: 36px;
+      width: 100%;
+      background-color: var(--lavender);
+      background-image:
+        linear-gradient(45deg, var(--mustard) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--mustard) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--mustard) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--mustard) 75%);
+      background-size: 36px 36px;
+      background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+    }
+
+    .checkerboard-espresso {
+      height: 36px;
+      width: 100%;
+      background-color: var(--lavender);
+      background-image:
+        linear-gradient(45deg, var(--espresso) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--espresso) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--espresso) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--espresso) 75%);
+      background-size: 36px 36px;
+      background-position: 0 0, 0 18px, 18px -18px, -18px 0;
+    }
+
+    /* Sticker Ovalado Lima Ácido */
+    .sticker-oval {
+      background-color: var(--acid-lime);
+      border: 2px solid var(--espresso);
+      color: var(--terracotta);
+      border-radius: 9999px;
+      box-shadow: 3px 3px 0px var(--espresso);
+      transform: rotate(-7deg);
+      transition: transform 0.25s ease;
+    }
+
+    .sticker-oval:hover {
+      transform: rotate(3deg) scale(1.05);
+    }
+
+    /* Tarjetas Seleccionables Interactivas */
+    .retro-option-card {
+      background-color: #FFFFFF;
+      border: 2.5px solid var(--espresso);
+      border-radius: 20px;
+      box-shadow: 4px 4px 0px var(--espresso);
+      transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .retro-option-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--espresso);
+      background-color: #FFFDF9;
+    }
+
+    .retro-option-card.selected {
+      background-color: var(--acid-lime);
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0px var(--espresso);
+    }
+
+    .retro-format-pill {
+      background-color: #FFFFFF;
+      border: 2.5px solid var(--espresso);
+      border-radius: 18px;
+      box-shadow: 3px 3px 0px var(--espresso);
+      transition: all 0.18s ease;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .retro-format-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 5px 5px 0px var(--espresso);
+    }
+
+    .retro-format-pill.selected {
+      background-color: var(--lilac);
+      box-shadow: 2px 2px 0px var(--espresso);
+      transform: translateY(1px);
+    }
+
+    .retro-angle-pill {
+      background-color: #FAF6EE;
+      border: 2px solid var(--espresso);
+      border-radius: 9999px;
+      transition: all 0.18s ease;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .retro-angle-pill.selected {
+      background-color: var(--espresso);
+      color: var(--acid-lime);
+    }
+
+    /* Botón Principal de Licuado */
+    .btn-licuar {
+      background-color: var(--terracotta);
+      color: #FFFFFF;
+      border: 3px solid var(--espresso);
+      border-radius: 9999px;
+      box-shadow: 6px 6px 0px var(--espresso);
+      transition: all 0.18s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-licuar:hover:not(:disabled) {
+      background-color: #c95725;
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px var(--espresso);
+    }
+
+    .btn-licuar:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0px var(--espresso);
+    }
+
+    .btn-licuar:disabled {
+      opacity: 0.85;
+      cursor: wait;
+    }
+
+    /* Animaciones de Licuadora */
+    @keyframes blenderShake {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      15% { transform: rotate(-8deg) scale(1.08); }
+      30% { transform: rotate(8deg) scale(1.1); }
+      45% { transform: rotate(-6deg) scale(1.06); }
+      60% { transform: rotate(6deg) scale(1.08); }
+      75% { transform: rotate(-4deg) scale(1.04); }
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(14px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .animate-blender {
+      animation: blenderShake 0.45s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+      animation: spinSlow 16s linear infinite;
+    }
+
+    .animate-pop-in {
+      animation: popIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Tarjetas de receta y resultados */
+    .recipe-card {
+      background-color: #FFFFFF;
+      border-radius: 22px;
+      border: 2.5px solid var(--espresso);
+      box-shadow: 5px 5px 0px var(--espresso);
+    }
+
+    /* Custom Scrollbar suave */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F2DCD6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3A2618;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-0 sm:py-6 md:py-10 px-0 sm:px-4">
+
+  <!-- Toast / Mensaje flotante (sin alert()) -->
+  <div id="toast-notification" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300">
+    <div class="bg-[#3A2618] text-[#E9F75E] border-2 border-[#E9F75E] px-5 py-3 rounded-full shadow-xl flex items-center gap-2.5 font-bold text-sm">
+      <span id="toast-icon">✨</span>
+      <span id="toast-text">¡Copiado al portapapeles!</span>
+    </div>
+  </div>
+
+  <!-- Contenedor Editorial Principal -->
+  <main class="editorial-sheet max-w-4xl mx-auto sm:rounded-[28px] overflow-visible relative border-x-0 sm:border-[3px] border-[#3A2618]">
+
+    <!-- BARRA SUPERIOR TERRACOTA (Top Nav Bar) -->
+    <header class="bg-[#DE6834] px-4 sm:px-8 py-3.5 sm:rounded-t-[24px] border-b-[3px] border-[#3A2618] flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <!-- Escudo estilizado Colegio Skinner -->
+        <div class="w-9 h-9 rounded-xl bg-[#16305C] border-2 border-white flex items-center justify-center shadow-sm shrink-0">
+          <span class="text-white font-display font-black text-xs tracking-tighter">CS</span>
+        </div>
+        <span class="font-groovy text-white text-xl sm:text-2xl tracking-tight drop-shadow-[0_2px_0_rgba(58,38,24,0.35)]">
+          skinner<span class="text-[#E9F75E]">mix</span>
+        </span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-white/95 text-xs font-bold tracking-wide uppercase">
+        <span>Maternal a Prepa UNAM</span>
+        <span>•</span>
+        <span>40 Años CDMX</span>
+      </nav>
+
+      <a href="#licuadora-app" class="bg-[#FAF6EE] hover:bg-[#E9F75E] text-[#3A2618] border-2 border-[#3A2618] font-extrabold text-xs px-4 py-2 rounded-full transition-colors shadow-[2px_2px_0px_#3A2618]">
+        ¡Mezclar copy! 🌪️
+      </a>
+    </header>
+
+    <!-- HERO EDITORIAL RETRO-PLAYFUL -->
+    <section class="relative px-5 sm:px-10 pt-8 pb-10 text-center overflow-hidden">
+      <!-- Asterisco decorativo rosa izquierda -->
+      <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[#E6BFE7] absolute top-7 left-6 sm:left-14 pointer-events-none" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+        <path d="M27 4h10v19l16-10 5 9-16 9 16 9-5 9-16-10v21H27V39L11 49l-5-9 16-9-16-9 5-9 16 10V4z"/>
+      </svg>
+
+      <!-- Sticker icono derecho superior -->
+      <div class="hidden sm:flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E9F75E] border-2 border-[#3A2618] shadow-[3px_3px_0px_#3A2618] absolute top-7 right-12 rotate-12 pointer-events-none">
+        <span class="text-2xl">🦁</span>
+      </div>
+
+      <!-- Subtítulo superior -->
+      <p class="text-xs sm:text-sm font-bold tracking-wide text-[#3A2618]/80 mb-3">
+        Colegio Skinner CDMX • Ciclo Escolar 2026–2027 • @colegioskkinnercdmx
+      </p>
+
+      <!-- Gran Titular Display con bloques de color pastel -->
+      <h1 class="font-display font-black text-3xl sm:text-5xl md:text-[52px] text-[#3A2618] uppercase leading-[1.08] max-w-3xl mx-auto">
+        LA <span class="highlight-lilac">LICUADORA</span> REVOLTOSA
+        <span class="highlight-lavender">MIXADORA MÁGICA</span>
+        DE TEMAS SKINNER
+      </h1>
+
+      <!-- Píldora descriptiva -->
+      <div class="mt-5 inline-flex items-center gap-2 bg-[#E6BFE7] border-2 border-[#3A2618] px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold text-[#3A2618] shadow-[2px_2px_0px_#3A2618]">
+        <span>✨ Mezcla real de 40 años, Prepa UNAM, Trilingüe y Leoncio</span>
+      </div>
+
+      <!-- Fila inferior del Hero con Sello Circular y Asterisco Azul -->
+      <div class="mt-6 flex items-center justify-between max-w-xl mx-auto px-2">
+        <!-- Sello Circular estilo aperitivo retro -->
+        <div class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shrink-0">
+          <svg class="w-full h-full animate-spin-slow text-[#3A2618]" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
+            </defs>
+            <text font-size="10.2" font-weight="800" fill="currentColor" letter-spacing="1.8">
+              <textPath href="#circlePath" startOffset="0%">
+                • 100% TRILINGÜE • PREPA UNAM
+              </textPath>
+            </text>
+          </svg>
+          <span class="absolute text-lg sm:text-xl" aria-hidden="true">🎓</span>
+        </div>
+
+        <p class="text-xs sm:text-sm font-semibold text-[#3A2618]/80 max-w-xs px-2">
+          Elige el tema, selecciona el formato visual y obtén copies listos para publicar + dirección de arte y rodaje.
+        </p>
+
+        <!-- Estrella/Asterisco azul pastel -->
+        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[#B7C9EE] shrink-0" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+          <path d="M32 2l6 20 20-6-14 16 14 16-20-6-6 20-6-20-20 6 14-16L6 16l20 6z"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- DIVISOR CHECKERBOARD MOSTAZA / LAVANDA -->
+    <div class="checkerboard-mustard border-y-[3px] border-[#3A2618] relative">
+      <!-- Sticker Ovalado flotante derecho -->
+      <div class="sticker-oval px-4 py-1.5 font-groovy text-xs sm:text-sm font-black uppercase tracking-tight absolute -bottom-5 right-4 sm:right-10 z-10 select-none">
+        ¡copy listo! 🌪️
+      </div>
+    </div>
+
+    <!-- SECCIÓN INTERACTIVA PRINCIPAL: LA LICUADORA -->
+    <section id="licuadora-app" class="px-5 sm:px-10 py-10 space-y-9">
+
+      <!-- PASO 1: TEMA CLAVE DEL COPY -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="bg-[#3A2618] text-[#E9F75E] font-display font-black text-xs px-3 py-1 rounded-full uppercase">Paso 1</span>
+            <h2 class="font-display font-black text-xl sm:text-2xl uppercase text-[#3A2618]">
+              ¿Qué ingrediente principal licuamos hoy?
+            </h2>
+          </div>
+          <span class="text-xs font-bold text-[#3A2618]/70 bg-[#E6BFE7]/60 px-3 py-1 rounded-full">Elige 1 tema clave</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="topic-selector" role="group" aria-label="Selector de tema clave">
+          <!-- Opción 1: Inscripciones -->
+          <button type="button" data-topic="inscripciones" aria-pressed="true" class="retro-option-card selected p-4 text-left flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-[#DE6834] border-2 border-[#3A2618] flex items-center justify-center text-xl shrink-0">
+              🏫
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-display font-black text-base sm:text-lg text-[#3A2618]">Inscripciones</span>
+                <span class="text-[10px] font-extrabold uppercase bg-[#3A2618] text-white px-2 py-0.5 rounded-full">2026-2027</span>
+              </div>
+              <p class="text-xs text-[#3A2618]/80 mt-1 leading-relaxed">
+                Captación directa, visitas guiadas por DM, Maternal a Prepa UNAM y bienvenida a la Comunidad Skinner.
+              </p>
+            </div>
+          </button>
+
+          <!-- Opción 2: Idiomas -->
+          <button type="button" data-topic="idiomas" aria-pressed="false" class="retro-option-card p-4 text-left flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-[#B7C9EE] border-2 border-[#3A2618] flex items-center justify-center text-xl shrink-0">
+              🗣️
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-display font-black text-base sm:text-lg text-[#3A2618]">Idiomas</span>
+                <span class="text-[10px] font-extrabold uppercase bg-[#16305C] text-white px-2 py-0.5 rounded-full">Cambridge</span>
+              </div>
+              <p class="text-xs text-[#3A2618]/80 mt-1 leading-relaxed">
+                Dominio fluido de inglés y francés, certificaciones Cambridge e International House y Food Fair vivencial.
+              </p>
+            </div>
+          </button>
+
+          <!-- Opción 3: Educación trilingüe -->
+          <button type="button" data-topic="trilingue" aria-pressed="false" class="retro-option-card p-4 text-left flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-[#E6BFE7] border-2 border-[#3A2618] flex items-center justify-center text-xl shrink-0">
+              🌍
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-display font-black text-base sm:text-lg text-[#3A2618]">Educación trilingüe</span>
+                <span class="text-[10px] font-extrabold uppercase bg-[#3A2618] text-[#E9F75E] px-2 py-0.5 rounded-full">Global</span>
+              </div>
+              <p class="text-xs text-[#3A2618]/80 mt-1 leading-relaxed">
+                Modelo integral en 3 idiomas + tecnología para conectar, comunicarse y abrirse camino en el mundo.
+              </p>
+            </div>
+          </button>
+
+          <!-- Opción 4: Invertir en educación -->
+          <button type="button" data-topic="invertir" aria-pressed="false" class="retro-option-card p-4 text-left flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-[#B28524] border-2 border-[#3A2618] flex items-center justify-center text-xl shrink-0">
+              🎓
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-display font-black text-base sm:text-lg text-[#3A2618]">Invertir en educación</span>
+                <span class="text-[10px] font-extrabold uppercase bg-[#C82333] text-white px-2 py-0.5 rounded-full">40 años</span>
+              </div>
+              <p class="text-xs text-[#3A2618]/80 mt-1 leading-relaxed">
+                El mejor legado para su futuro: 40 años de prestigio, liderazgo, disciplina y puente universitario UNAM.
+              </p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- PASO 2: FORMATO DE PUBLICACIÓN -->
+      <div>
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="bg-[#3A2618] text-[#E9F75E] font-display font-black text-xs px-3 py-1 rounded-full uppercase">Paso 2</span>
+            <h2 class="font-display font-black text-xl sm:text-2xl uppercase text-[#3A2618]">
+              ¿Cómo lo vamos a ilustrar y publicar?
+            </h2>
+          </div>
+          <span class="text-xs font-bold text-[#3A2618]/70 bg-[#C8D7F5] px-3 py-1 rounded-full">Elige formato visual</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="format-selector" role="group" aria-label="Selector de formato visual">
+          <button type="button" data-format="reel" aria-pressed="true" class="retro-format-pill selected p-3.5 text-center flex flex-col items-center justify-center gap-1.5">
+            <span class="text-2xl">🎬</span>
+            <span class="font-display font-black text-sm text-[#3A2618]">Reel</span>
+            <span class="text-[11px] font-semibold text-[#3A2618]/75">Portada + Guía de rodaje</span>
+          </button>
+
+          <button type="button" data-format="carrusel2" aria-pressed="false" class="retro-format-pill p-3.5 text-center flex flex-col items-center justify-center gap-1.5">
+            <span class="text-2xl">🖼️</span>
+            <span class="font-display font-black text-sm text-[#3A2618]">Carrusel 2 imgs</span>
+            <span class="text-[11px] font-semibold text-[#3A2618]/75">Gancho + Cierre CTA</span>
+          </button>
+
+          <button type="button" data-format="carrusel4" aria-pressed="false" class="retro-format-pill p-3.5 text-center flex flex-col items-center justify-center gap-1.5">
+            <span class="text-2xl">🎞️</span>
+            <span class="font-display font-black text-sm text-[#3A2618]">Carrusel 4 imgs</span>
+            <span class="text-[11px] font-semibold text-[#3A2618]/75">Storytelling 4 láminas</span>
+          </button>
+
+          <button type="button" data-format="post" aria-pressed="false" class="retro-format-pill p-3.5 text-center flex flex-col items-center justify-center gap-1.5">
+            <span class="text-2xl">📸</span>
+            <span class="font-display font-black text-sm text-[#3A2618]">Post simple</span>
+            <span class="text-[11px] font-semibold text-[#3A2618]/75">1 imagen + titular</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PASO 3 (OPCIONAL): TOQUE DE SABOR / ENFOQUE -->
+      <div class="bg-[#F2DCD6]/65 border-2 border-[#3A2618] rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🎛️</span>
+          <div>
+            <span class="font-display font-extrabold text-sm text-[#3A2618] uppercase block">Sabor del mensaje (Ángulo):</span>
+            <span class="text-xs text-[#3A2618]/75">Ajusta a quién y cómo se lo decimos</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2" id="angle-selector" role="group" aria-label="Selector de ángulo comunicativo">
+          <button type="button" data-angle="emocional" aria-pressed="true" class="retro-angle-pill selected px-3.5 py-1.5 text-xs font-extrabold">
+            💙 Emocional & Comunidad
+          </button>
+          <button type="button" data-angle="academico" aria-pressed="false" class="retro-angle-pill px-3.5 py-1.5 text-xs font-extrabold">
+            🎓 Académico & Futuro UNAM
+          </button>
+          <button type="button" data-angle="vivencial" aria-pressed="false" class="retro-angle-pill px-3.5 py-1.5 text-xs font-extrabold">
+            🦁 Dinámico & Vivencial
+          </button>
+        </div>
+      </div>
+
+      <!-- BOTÓN PRINCIPAL DE ACCIÓN (LICUAR) -->
+      <div class="pt-1 flex flex-col items-center">
+        <button id="blend-btn" type="button" class="btn-licuar px-7 sm:px-10 py-4 font-display font-black text-base sm:text-xl uppercase tracking-wide flex items-center gap-3 cursor-pointer">
+          <span id="blender-icon" class="text-2xl inline-block">🌪️</span>
+          <span id="blender-btn-text">¡LICUAR Y MEZCLAR COPY MÁGICO!</span>
+          <span class="text-2xl">✨</span>
+        </button>
+        <p id="blender-status" class="text-xs font-bold text-[#3A2618]/75 mt-3 min-h-[18px] text-center">
+          Listo para combinar el ADN real del Colegio Skinner.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- SECCIÓN DE RESULTADOS (ESTILO BLOQUE MOSTAZA) -->
+    <section id="results-section" class="bg-[#B28524] border-t-[3px] border-[#3A2618] px-5 sm:px-10 py-10 relative">
+
+      <!-- Píldora Título Lavanda centrada -->
+      <div class="text-center mb-8">
+        <div class="inline-block bg-[#C8D7F5] border-[2.5px] border-[#3A2618] px-6 py-2 rounded-2xl shadow-[4px_4px_0px_#3A2618]">
+          <h2 class="font-display font-black text-xl sm:text-3xl uppercase text-[#3A2618]">
+            ¿CUÁL ES LA RECETA SKINNER?
+          </h2>
+        </div>
+      </div>
+
+      <!-- ANATOMÍA DE LA MEZCLA (3 tarjetas blancas con asteriscos retro arriba) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" id="anatomy-cards">
+        <!-- Tarjeta 1: Qué decimos -->
+        <div class="recipe-card p-5 text-center flex flex-col items-center">
+          <svg class="w-8 h-8 text-[#DE6834] mb-2.5" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+            <path d="M27 4h10v19l16-10 5 9-16 9 16 9-5 9-16-10v21H27V39L11 49l-5-9 16-9-16-9 5-9 16 10V4z"/>
+          </svg>
+          <h3 class="font-display font-black text-base uppercase text-[#3A2618] mb-1.5">Qué decimos</h3>
+          <p id="anatomy-what" class="text-xs sm:text-sm text-[#3A2618]/85 leading-relaxed font-medium">
+            Inscripciones abiertas ciclo 2026-2027 desde Maternal hasta Preparatoria incorporada a la UNAM.
+          </p>
+        </div>
+
+        <!-- Tarjeta 2: A quién se lo decimos -->
+        <div class="recipe-card p-5 text-center flex flex-col items-center">
+          <svg class="w-8 h-8 text-[#E6BFE7] mb-2.5" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+            <path d="M27 4h10v19l16-10 5 9-16 9 16 9-5 9-16-10v21H27V39L11 49l-5-9 16-9-16-9 5-9 16 10V4z"/>
+          </svg>
+          <h3 class="font-display font-black text-base uppercase text-[#3A2618] mb-1.5">A quién</h3>
+          <p id="anatomy-who" class="text-xs sm:text-sm text-[#3A2618]/85 leading-relaxed font-medium">
+            Familias en CDMX que buscan cercanía, continuidad escolar y acompañamiento en cada etapa.
+          </p>
+        </div>
+
+        <!-- Tarjeta 3: Cómo lo decimos -->
+        <div class="recipe-card p-5 text-center flex flex-col items-center">
+          <svg class="w-8 h-8 text-[#F2DCD6] mb-2.5" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+            <path d="M27 4h10v19l16-10 5 9-16 9 16 9-5 9-16-10v21H27V39L11 49l-5-9 16-9-16-9 5-9 16 10V4z"/>
+          </svg>
+          <h3 class="font-display font-black text-base uppercase text-[#3A2618] mb-1.5">Cómo lo decimos</h3>
+          <p id="anatomy-how" class="text-xs sm:text-sm text-[#3A2618]/85 leading-relaxed font-medium">
+            Tono cálido, aspiracional y cercano, con viñetas claras, emojis institucionales y CTA directo a visita por DM.
+          </p>
+        </div>
+      </div>
+
+      <!-- BLOQUE A: COPY LISTO PARA PUBLICAR -->
+      <div class="recipe-card p-5 sm:p-7 mb-7" id="copy-output-card">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b-2 border-dashed border-[#3A2618]/25">
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <span class="bg-[#E9F75E] border-2 border-[#3A2618] px-3 py-1 rounded-full font-display font-black text-xs uppercase text-[#3A2618]">
+              ✍️ Copy / Caption Listo
+            </span>
+            <span id="variation-badge" class="text-xs font-bold text-[#3A2618]/70">Mezcla #1</span>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <button id="remix-btn" type="button" class="bg-[#FAF6EE] hover:bg-[#E6BFE7] text-[#3A2618] border-2 border-[#3A2618] font-extrabold text-xs px-3.5 py-2 rounded-full transition-colors cursor-pointer flex items-center gap-1.5">
+              <span>🔄</span>
+              <span>Volver a licuar</span>
+            </button>
+            <button id="copy-caption-btn" type="button" class="bg-[#DE6834] hover:bg-[#c55524] text-white border-2 border-[#3A2618] font-extrabold text-xs px-4 py-2 rounded-full transition-colors shadow-[2px_2px_0px_#3A2618] cursor-pointer flex items-center gap-1.5">
+              <span>📋</span>
+              <span>Copiar Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview estilo Instagram Post -->
+        <div class="bg-[#FAF6EE] border-2 border-[#3A2618]/20 rounded-2xl p-4 sm:p-6">
+          <div class="flex items-center gap-2.5 mb-3">
+            <div class="w-8 h-8 rounded-full bg-[#16305C] border border-[#3A2618] flex items-center justify-center text-white font-display font-black text-[10px]">
+              CS
+            </div>
+            <div>
+              <p class="text-xs font-extrabold text-[#3A2618] leading-none">colegioskkinnercdmx</p>
+              <p class="text-[11px] text-[#3A2618]/65">Colegio Skinner • Ciudad de México</p>
+            </div>
+          </div>
+
+          <div id="generated-copy-text" class="whitespace-pre-line text-sm sm:text-[15px] text-[#3A2618] leading-relaxed font-medium select-all">
+            <!-- Se llena dinámicamente con JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE B: GUÍA VISUAL / ILUSTRACIÓN SEGÚN FORMATO -->
+      <div class="recipe-card p-5 sm:p-7" id="visual-output-card">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-[#3A2618]/25">
+          <div class="flex items-center gap-2.5">
+            <span id="visual-format-badge" class="bg-[#C8D7F5] border-2 border-[#3A2618] px-3 py-1 rounded-full font-display font-black text-xs uppercase text-[#3A2618]">
+              🎬 Guía Visual + Rodaje en Sitio: Reel
+            </span>
+          </div>
+
+          <button id="copy-all-btn" type="button" class="bg-[#3A2618] hover:bg-[#26180f] text-[#E9F75E] border-2 border-[#3A2618] font-extrabold text-xs px-4 py-2 rounded-full transition-colors cursor-pointer flex items-center gap-1.5">
+            <span>📦</span>
+            <span>Copiar Todo (Copy + Visual)</span>
+          </button>
+        </div>
+
+        <!-- Contenedor dinámico para Reel / Post / Carrusel 2 / Carrusel 4 -->
+        <div id="visual-guide-container" class="space-y-4">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- DIVISOR CHECKERBOARD MARRÓN EXPRESO / LAVANDA -->
+    <div class="checkerboard-espresso border-y-[3px] border-[#3A2618] relative">
+      <div class="sticker-oval px-4 py-1.5 font-groovy text-xs sm:text-sm font-black uppercase tracking-tight absolute -bottom-5 left-4 sm:left-10 z-10 select-none">
+        orgullo skinner 🦁
+      </div>
+    </div>
+
+    <!-- FOOTER EDITORIAL -->
+    <footer class="px-5 sm:px-10 py-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-display font-black text-lg sm:text-xl uppercase text-[#3A2618]">
+          COLEGIO SKINNER • CDMX
+        </p>
+        <p class="text-xs text-[#3A2618]/75 mt-0.5">
+          Maternal • Preescolar • Primaria • Secundaria • Preparatoria Incorporada a la UNAM
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 bg-[#E6BFE7] border-2 border-[#3A2618] px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[#3A2618]">
+          <span>🦁</span> Leoncio Approved
+        </span>
+        <span class="font-groovy text-xl text-[#DE6834]">skinner</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /**
+       * BASE DE CONOCIMIENTO Y MOTOR DE MEZCLA DEL COLEGIO SKINNER
+       * Construida a partir del análisis de las publicaciones reales de @colegioskkinnercdmx:
+       * - 40 años formando mentes creativas
+       * - Niveles: Maternal, Preescolar, Primaria, Secundaria y Preparatoria (incorporada a la UNAM)
+       * - Modelo Trilingüe: Español, Inglés y Francés con certificaciones Cambridge e International House
+       * - 4 Pilares: Liderazgo, Excelencia, Trilingüe y Tecnología
+       * - Mascota: León / Leoncio (con lentes y uniforme azul marino/rojo/blanco)
+       * - Instalaciones y vivencias: Gimnasio, auditorio, laboratorio de cómputo/ciencias, biblioteca,
+       *   patio techado con velaria, básquet, English & French Food Fair
+       */
+      const SKINNER_RECIPES = {
+        inscripciones: {
+          label: "Inscripciones 2026–2027",
+          angles: {
+            emocional: {
+              what: "Inscripciones abiertas ciclo 2026–2027 para crecer en una comunidad cercana desde Maternal hasta Preparatoria UNAM.",
+              who: "Papás y mamás en CDMX que buscan un segundo hogar donde sus hijos hagan amistades para toda la vida.",
+              how: "Tono cálido, acogedor y familiar, destacando la continuidad escolar y el acompañamiento paso a paso."
+            },
+            academico: {
+              what: "Apertura de inscripciones 2026–2027 con estructura académica sólida, formación trilingüe y Preparatoria incorporada a la UNAM.",
+              who: "Familias que priorizan el nivel académico, la disciplina y una ruta directa hacia la universidad.",
+              how: "Tono institucional, claro y confiable, respaldado por 40 años de excelencia educativa."
+            },
+            vivencial: {
+              what: "Un recorrido lleno de experiencias reales: aulas interactivas, laboratorio, básquet, eventos culturales y la energía de Leoncio.",
+              who: "Familias dinámicas y alumnos curiosos que aprenden haciendo, explorando y conviviendo.",
+              how: "Tono entusiasta, fresco y participativo con invitación directa a conocer el campus."
+            }
+          },
+          variations: [
+            {
+              caption: "🏫✨ ¡El lugar ideal para acompañar a tus hijos en cada etapa de su crecimiento!\n\nEn Colegio Skinner abrimos las puertas al ciclo escolar 2026–2027 con una formación integral desde Maternal y Preescolar 👧👦 hasta nuestra Preparatoria incorporada a la UNAM 🎓.\n\nAquí no solo vienen a aprender: vienen a descubrir sus talentos, hacer amigos para toda la vida y construir recuerdos que los acompañarán siempre 💙🦁.\n\n📩 ¡Inscripciones abiertas! Envíanos un DM hoy mismo, agenda una visita guiada y conoce nuestras instalaciones.\n\n#ColegioSkinner #InscripcionesAbiertas #ComunidadSkinner #PreparatoriaUNAM #EducaciónIntegral",
+              visuals: {
+                reel: {
+                  coverText: "ASÍ SE VIVE EL COLEGIO SKINNER 🏫✨",
+                  subtitleBadge: "INSCRIPCIONES ABIERTAS 2026–2027",
+                  productionGuide: {
+                    location: "Entrada principal / Patio techado con velaria (exterior) → Salón de clases interactivo (interior) → Cancha de básquetbol en gimnasio.",
+                    characters: "2 alumnos de preparatoria con uniforme azul marino/rojo (guías), 3 niños de preescolar saludando, docente en pizarrón digital y la botarga de Leoncio con lentes.",
+                    shotStyle: "Plano secuencia dinámico en gimbal (estilo POV de recorrido). Transiciones con whip-pan (barrido rápido) entre espacios y plano detalle a los uniformes y escudo CS.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Cámara sigue a alumna de prepa caminando hacia atrás en el patio techado señalando la velaria y los salones.",
+                        dialogue: "«¿Buscas una escuela donde tus hijos crezcan desde Maternal hasta Prepa UNAM? ¡Acompáñanos!»"
+                      },
+                      {
+                        time: "03–10s • Desarrollo en Campus",
+                        action: "Corte en movimiento hacia salón interior (niños usando pantalla táctil), luego al área de preescolar y cierre en gimnasio con Leoncio.",
+                        dialogue: "Voz en off: «En Colegio Skinner combinamos educación trilingüe, tecnología y una comunidad que se siente como casa.»"
+                      },
+                      {
+                        time: "10–15s • Cierre y CTA",
+                        action: "Plano medio de Leoncio chocando los cinco con un alumno mientras ambos apuntan hacia abajo (botón de perfil/DM).",
+                        dialogue: "«Inscripciones abiertas 2026–2027. ¡Mándanos DM y ven a conocernos!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Captación Ciclo 2026–2027",
+                    imagePrompt: "Fotografía luminosa y cálida de alumnos de distintas edades (preescolar y preparatoria) caminando juntos sonrientes en el patio del Colegio Skinner con uniforme azul marino, suéter con franjas rojas y blancas y escudo CS bordado. Encuadre editorial con fondo azul marino institucional y detalles gráficos limpios.",
+                    overlayText: "DE LAS PRIMERAS LETRAS A LA VISIÓN UNIVERSITARIA.\nInscripciones Abiertas 2026–2027 | Maternal a Prepa UNAM"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Portada / Gancho Emocional",
+                    imagePrompt: "Retrato grupal espontáneo de estudiantes felices levantando la mano en el aula interactiva del Colegio Skinner, iluminación natural cálida, estilo fotográfico auténtico con el escudo CS en la esquina superior.",
+                    overlayText: "HAY LUGARES DONDE SE APRENDE…\nY LUGARES DONDE SE CONSTRUYE SU FUTURO. 🏫💙"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Propuesta Integral + Llamado a la Acción",
+                    imagePrompt: "Collage limpio estilo editorial azul marino y rojo con fotos reales del laboratorio de cómputo, biblioteca escolar y Leoncio saludando.",
+                    overlayText: "MATERNAL • PREESCOLAR • PRIMARIA • SECUNDARIA • PREPARATORIA UNAM\n📩 Agenda tu visita por DM • Ciclo 2026–2027"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada (El Gancho)",
+                    imagePrompt: "Estudiante de preparatoria y niño de preescolar con uniforme oficial del Colegio Skinner mirando hacia el frente con entusiasmo, fondo azul marino con acentos rojos.",
+                    overlayText: "IMAGINA QUE TU HIJO CREZCA EN UN MISMO LUGAR HASTA LA PREPA 🎓✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Primeros Pasos (Maternal y Preescolar)",
+                    imagePrompt: "Maestra acompañando con cariño a pequeños de maternal y preescolar en actividades lúdicas y de motricidad en un salón colorido e iluminado.",
+                    overlayText: "1. PRIMEROS PASOS CON CALIDEZ\nExploración, lenguaje y valores desde Maternal y Preescolar. 🧸💛"
+                  },
+                  {
+                    slideTitle: "Slide 3 — Impulso Académico y Trilingüe",
+                    imagePrompt: "Alumnos de primaria y secundaria trabajando en pantallas interactivas y laboratorio de cómputo en equipo.",
+                    overlayText: "2. EDUCACIÓN TRILINGÜE Y TECNOLOGÍA\nInglés, francés y herramientas digitales para un mundo global. 🌍💻"
+                  },
+                  {
+                    slideTitle: "Slide 4 — Preparatoria UNAM + Cierre CTA",
+                    imagePrompt: "Jóvenes de Preparatoria Skinner con toga/uniforme y mascota Leoncio sonriendo frente al campus.",
+                    overlayText: "3. PREPARATORIA INCORPORADA A LA UNAM\n¡Inscripciones abiertas! Escríbenos por DM y agenda tu visita. 📩🚀"
+                  }
+                ]
+              }
+            },
+            {
+              caption: "🎓✨ ¡Construimos el puente hacia el futuro profesional de tus hijos!\n\nEn Colegio Skinner sabemos que elegir escuela es una de las decisiones más importantes para tu familia. Por eso ofrecemos un entorno cercano, con estructura académica y 40 años de experiencia formando generaciones exitosas 🚀📚.\n\nConoce nuestra propuesta desde preescolar hasta Preparatoria incorporada a la UNAM:\n🌍 Formación trilingüe (español, inglés y francés)\n💻 Tecnología que impulsa el aprendizaje\n🦁 Acompañamiento cercano en una gran comunidad\n\n📩 Escríbenos un DM y agenda tu próxima visita para conocer el Colegio Skinner. ¡Te esperamos!\n\n#ColegioSkinner #PreparatoriaUNAM #InscripcionesAbiertas #EducacionCDMX #OrgulloSkinner",
+              visuals: {
+                reel: {
+                  coverText: "3 RAZONES PARA ELEGIR COLEGIO SKINNER 🎓💙",
+                  subtitleBadge: "PREPA UNAM + TRILINGÜE",
+                  productionGuide: {
+                    location: "Salón de Preparatoria (interior con pizarrón digital) → Laboratorio de cómputo/ciencias → Patio central frente al escudo CS.",
+                    characters: "1 alumno y 1 alumna de Preparatoria Skinner con suéter oficial, profesor asesor frente a pantalla digital y grupo de compañeros en segundo plano.",
+                    shotStyle: "Cámara en mano ágil (estilo vlog/creador) con cortes rítmicos al ritmo del beat, planos medios cerrados a rostro y planos detalle de manos escribiendo/programando.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Alumno en primer plano dentro del salón de Prepa sosteniendo 3 dedos frente a cámara.",
+                        dialogue: "«3 razones por las que elegir Colegio Skinner cambia tu futuro antes de entrar a la universidad.»"
+                      },
+                      {
+                        time: "03–11s • Desarrollo en Campus",
+                        action: "3 clips de 2.5s: 1) Clase trilingüe en pizarrón, 2) Práctica en laboratorio de cómputo, 3) Convivencia en recreo.",
+                        dialogue: "«Uno: formación trilingüe real. Dos: tecnología en cada clase. Tres: ¡Preparatoria incorporada a la UNAM!»"
+                      },
+                      {
+                        time: "11–15s • Cierre y CTA",
+                        action: "Plano conjunto sonriendo en el patio mientras aparece gráfico con el escudo del colegio.",
+                        dialogue: "«Agenda tu visita por DM. ¡Tu lugar en Skinner te espera!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Puerta Abierta a Familias",
+                    imagePrompt: "Fotografía de familia (papá, mamá e hijo graduado/estudiante con uniforme Skinner) sonriendo con orgullo en las instalaciones del colegio, estética editorial limpia en tonos azul marino, blanco y acentos amarillos.",
+                    overlayText: "ELEGIMOS EL COLEGIO SKINNER\n40 años formando mentes creativas | Inscripciones Abiertas 2026–2027"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Pregunta Clave para Papás",
+                    imagePrompt: "Estudiante de preparatoria con uniforme azul marino y suéter con cuello rojo sosteniendo una tableta digital con seguridad y sonrisa natural.",
+                    overlayText: "¿BUSCAS LA ESCUELA IDEAL PARA SU SIGUIENTE ETAPA? 🎓✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Los 4 Pilares + Invitación",
+                    imagePrompt: "Dos alumnos señalando bloques tipográficos grandes sobre fondo del patio escolar del Colegio Skinner.",
+                    overlayText: "TRILINGÜE • LIDERAZGO • EXCELENCIA • TECNOLOGÍA\n📩 Agenda tu recorrido personalizado por DM"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Joven estudiante sonriendo con uniforme Skinner, diseño gráfico limpio con número '5' grande y tipografía blanca y amarilla sobre azul marino.",
+                    overlayText: "5 PREGUNTAS QUE DEBES HACERTE ANTES DE ELEGIR ESCUELA 👀🏫"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Continuidad y Validez Oficial",
+                    imagePrompt: "Alumnos de preparatoria tomando clase con profesor frente a pantalla interactiva.",
+                    overlayText: "¿TIENE INCORPORACIÓN A LA UNAM?\nEn Skinner acompañamos su camino hasta la Preparatoria UNAM. 🎓"
+                  },
+                  {
+                    slideTitle: "Slide 3 — Idiomas Reales",
+                    imagePrompt: "Estudiantes recibiendo certificados oficiales de Cambridge junto a autoridades académicas.",
+                    overlayText: "¿DOMINARÁ MÁS DE UN IDIOMA?\nInglés y francés con certificaciones internacionales Cambridge. 🌍"
+                  },
+                  {
+                    slideTitle: "Slide 4 — Invitación a Conocer el Campus",
+                    imagePrompt: "Fachada/patio techado con plantas, aulas iluminadas y Leoncio dando la bienvenida.",
+                    overlayText: "VEN A COMPROBARLO EN PERSONA\n📩 Envía DM y agenda tu visita al Colegio Skinner."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        idiomas: {
+          label: "Idiomas (Inglés & Francés)",
+          angles: {
+            emocional: {
+              what: "Aprendizaje vivo de inglés y francés que despierta seguridad, curiosidad cultural y orgullo en cada alumno.",
+              who: "Papás que desean que sus hijos hablen idiomas con naturalidad y disfruten aprender sin miedo.",
+              how: "Tono inspirador, humano y celebratorio, resaltando logros reales como certificaciones y ferias culturales."
+            },
+            academico: {
+              what: "Dominio fluido del inglés y francés avalado por certificaciones oficiales de validez internacional (Cambridge e International House).",
+              who: "Familias que buscan resultados medibles, nivel competitivo y credenciales académicas internacionales.",
+              how: "Tono riguroso, confiable y orientado a logros académicos tangibles."
+            },
+            vivencial: {
+              what: "Eventos como la English and French Food Fair donde los alumnos practican idiomas cocinando, exponiendo y compartiendo cultura.",
+              who: "Alumnos y familias que valoran la práctica fuera del salón de clases y el aprendizaje activo.",
+              how: "Tono dinámico, alegre y sensorial que muestra el idioma en acción."
+            }
+          },
+          variations: [
+            {
+              caption: "🌍🗣️ ¡Dominar idiomas no es solo memorizar vocabulario: es abrir la mente y conectar con el mundo!\n\nEn Colegio Skinner impulsamos el dominio fluido del inglés y el francés desde los primeros años hasta la Preparatoria, respaldado por certificaciones oficiales de validez internacional junto a Cambridge e International House 🎓✨.\n\nNuestros alumnos viven los idiomas dentro y fuera del aula, desarrollando seguridad para expresarse, investigar y destacar en cualquier escenario internacional 🚀📚.\n\n📩 ¿Quieres conocer nuestro programa de idiomas? Envíanos un DM y agenda una visita.\n\n#ColegioSkinner #CambridgeEnglish #CertificacionesCambridge #Idiomas #EducaciónDeCalidad",
+              visuals: {
+                reel: {
+                  coverText: "INGLÉS Y FRANCÉS CON CERTIFICACIÓN INTERNACIONAL 🌍🎓",
+                  subtitleBadge: "CAMBRIDGE • INTERNATIONAL HOUSE",
+                  productionGuide: {
+                    location: "Auditorio / Salón de actos (interior) → Salón de idiomas (interior con material visual en inglés y francés).",
+                    characters: "3 alumnos de secundaria/preparatoria con sus certificados Cambridge en mano, maestra de idiomas y autoridad académica.",
+                    shotStyle: "Plano detalle con enfoque selectivo (bokeh) al sello de Cambridge en el diploma, seguido de cámara lenta (60fps) de aplausos y sonrisas genuinas.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Close-up a alumna abriendo su certificado Cambridge en el auditorio y mirando orgullosa a cámara.",
+                        dialogue: "«Cuando el esfuerzo en inglés y francés se convierte en un certificado válido en todo el mundo…»"
+                      },
+                      {
+                        time: "03–10s • Desarrollo en Campus",
+                        action: "Tomas dinámicas de alumnos conversando en inglés y francés en clase, alternadas con la entrega oficial de diplomas.",
+                        dialogue: "Alumno 1 (en inglés): «We speak with confidence.» / Alumna 2 (en francés): «Et nous sommes prêts pour le monde!»"
+                      },
+                      {
+                        time: "10–15s • Cierre y CTA",
+                        action: "Los 3 estudiantes juntos frente a cámara mostrando sus diplomas junto a Leoncio.",
+                        dialogue: "Voz en off: «Certificaciones Cambridge e International House en Colegio Skinner. ¡Escríbenos por DM!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Orgullo Certificaciones Cambridge",
+                    imagePrompt: "Fotografía documental cálida y luminosa de estudiantes del Colegio Skinner sosteniendo sus certificados oficiales de Cambridge English con sonrisas auténticas en el auditorio escolar.",
+                    overlayText: "EL ESFUERZO TIENE RECOMPENSAS GLOBALES 🌍\nCertificaciones Oficiales Cambridge e International House"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Portada Impacto Global",
+                    imagePrompt: "Alumna de preparatoria Skinner sonriendo con libros y tableta, fondo azul marino con detalles gráficos de globo terráqueo y colores rojo/blanco.",
+                    overlayText: "DOMINIO FLUIDO DE INGLÉS Y FRANCÉS 🗣️✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Aval Internacional + CTA",
+                    imagePrompt: "Momento de entrega de reconocimientos Cambridge con profesores y alumnos en ambiente de celebración.",
+                    overlayText: "CERTIFICACIONES OFICIALES DE VALIDEZ INTERNACIONAL\n📩 Agenda tu visita por DM y conoce Colegio Skinner."
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Gancho",
+                    imagePrompt: "Estudiantes conversando alegremente en el patio del colegio con libros y cuadernos.",
+                    overlayText: "MÁS QUE CLASES DE IDIOMAS:\nHABLAR EL MUNDO CON CONFIANZA 🌍🗣️"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Inglés + Francés",
+                    imagePrompt: "Clase dinámica con pantalla interactiva mostrando vocabulario en inglés y francés.",
+                    overlayText: "INGLÉS Y FRANCÉS DESDE TEMPRANA EDAD\nFluidez real, comprensión auditiva y expresión oral."
+                  },
+                  {
+                    slideTitle: "Slide 3 — Prueba Académica (Cambridge)",
+                    imagePrompt: "Alumnos posando con sus certificados de Cambridge e International House.",
+                    overlayText: "AVAL INTERNACIONAL\nCertificaciones oficiales con Cambridge e International House. 🎓"
+                  },
+                  {
+                    slideTitle: "Slide 4 — Cierre e Inscripciones",
+                    imagePrompt: "Leoncio saludando frente al aula con bandera de México, Reino Unido y Francia de forma sutil.",
+                    overlayText: "PREPARA SU FUTURO SIN FRONTERAS\n📩 Escríbenos por DM • Inscripciones Abiertas 2026–2027"
+                  }
+                ]
+              }
+            },
+            {
+              caption: "🍽️🌍 ¡Aprender idiomas también puede tener un delicioso sabor!\n\nEn nuestra English and French Food Fair, los alumnos del Colegio Skinner combinaron inglés, francés, gastronomía y cultura para compartir la riqueza de los estados de México 🇲🇽✨.\n\nCuando el aprendizaje sale del salón de clases, los idiomas se vuelven una herramienta viva para trabajar en equipo, investigar y perder el miedo a hablar en público 💙👏.\n\n🏫 ¡Así vivimos la educación en Skinner! Escríbenos por DM y ven a conocer nuestro proyecto educativo.\n\n#ColegioSkinner #ComunidadSkinner #AprendizajeVivencial #InglésYFrancés #OrgulloSkinner",
+              visuals: {
+                reel: {
+                  coverText: "¡ASÍ SE VIVE NUESTRA ENGLISH & FRENCH FOOD FAIR! 🍽️🌍",
+                  subtitleBadge: "APRENDIZAJE FUERA DEL AULA",
+                  productionGuide: {
+                    location: "Gimnasio techado / Patio principal (durante montaje o simulación de feria gastronómica y cultural).",
+                    characters: "Equipos de 3 a 4 alumnos de primaria y secundaria presentando stands culturales, docentes evaluando y padres invitados.",
+                    shotStyle: "Cámara dinámica estilo reportaje festivo: planos detalle de platillos y carteles en inglés/francés, movimientos orbitales alrededor de los alumnos exponiendo.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Plano detalle de un platillo típico mexicano mientras la cámara sube rápido al rostro sonriente de un alumno.",
+                        dialogue: "«¡Así se aprende inglés y francés en Colegio Skinner: viviendo nuestra cultura con todos los sentidos!»"
+                      },
+                      {
+                        time: "03–10s • Desarrollo en Campus",
+                        action: "Recorrido rápido por 3 stands distintos donde los alumnos explican ingredientes e historia en inglés y francés.",
+                        dialogue: "Voz en off: «En nuestra English and French Food Fair, los idiomas salen del salón para volverse trabajo en equipo.»"
+                      },
+                      {
+                        time: "10–15s • Cierre y CTA",
+                        action: "Toma abierta de todo el grupo celebrando con globos de colores y aplausos.",
+                        dialogue: "«¿Quieres que tu hijo aprenda así? ¡Agenda tu visita por DM!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Feria Gastronómica en Idiomas",
+                    imagePrompt: "Fotografía vibrante de estudiantes sonrientes presentando sus stands culturales en el gimnasio del Colegio Skinner durante la English and French Food Fair, ambiente festivo y educativo.",
+                    overlayText: "IDIOMAS + CULTURA + GASTRONOMÍA\nEnglish and French Food Fair en Colegio Skinner 🇲🇽🌍"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Gancho Sensorial",
+                    imagePrompt: "Estudiantes exponiendo platillos tradicionales con carteles escritos en inglés y francés.",
+                    overlayText: "¡APRENDER IDIOMAS TAMBIÉN TIENE UN DELICIOSO SABOR! 🍽️✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Aprendizaje Vivencial + CTA",
+                    imagePrompt: "Alumnos y familias disfrutando la convivencia en la feria escolar del Colegio Skinner.",
+                    overlayText: "PRÁCTICA REAL FUERA DEL SALÓN DE CLASES\n📩 Conoce nuestro modelo por DM • Inscripciones Abiertas"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Alumna sonriendo frente a decoración festiva de la feria de idiomas en el gimnasio Skinner.",
+                    overlayText: "ENGLISH & FRENCH FOOD FAIR:\nCUANDO LOS IDIOMAS COBRAN VIDA 🌍🎉"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Tres Culturas Conectadas",
+                    imagePrompt: "Detalle de alumnos explicando en inglés y francés las tradiciones de distintos estados de México.",
+                    overlayText: "MÉXICO EN INGLÉS Y FRANCÉS\nInvestigación, cultura y expresión oral en acción."
+                  },
+                  {
+                    slideTitle: "Slide 3 — Trabajo en Equipo",
+                    imagePrompt: "Compañeros colaborando y riendo juntos mientras atienden su stand escolar.",
+                    overlayText: "SEGURIDAD Y LIDERAZGO\nAprender haciendo y disfrutando cada etapa. 💙"
+                  },
+                  {
+                    slideTitle: "Slide 4 — CTA",
+                    imagePrompt: "Escudo Colegio Skinner con invitación limpia sobre fotografía del campus.",
+                    overlayText: "¿QUIERES QUE TU HIJO VIVA ESTA EXPERIENCIA?\n📩 Agenda tu visita hoy por DM."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        trilingue: {
+          label: "Educación Trilingüe",
+          angles: {
+            emocional: {
+              what: "Un modelo trilingüe que acompaña a cada niño desde sus primeras palabras hasta su visión universitaria.",
+              who: "Padres que sueñan con darle a sus hijos las llaves para sentirse en casa en cualquier parte del mundo.",
+              how: "Tono cálido, inspirador y de acompañamiento continuo."
+            },
+            academico: {
+              what: "Educación trilingüe como pilar estratégico junto con liderazgo, excelencia académica y tecnología educativa.",
+              who: "Familias que evalúan ventajas competitivas reales para la preparatoria y la universidad.",
+              how: "Tono estructurado, moderno y enfocado en competencias del futuro."
+            },
+            vivencial: {
+              what: "Inmersión natural en español, inglés y francés combinada con tecnología interactiva en el aula.",
+              who: "Familias jóvenes que buscan innovación educativa y dinamismo diario.",
+              how: "Tono ágil, moderno y visualmente atractivo."
+            }
+          },
+          variations: [
+            {
+              caption: "🌍✨ 4 palabras que marcan la diferencia en la educación de tu hijo:\n\n👑 Liderazgo — para que crezca con confianza y aprenda a tomar decisiones.\n🏆 Excelencia — para desarrollar su máximo potencial y superar nuevos retos.\n🌍 Trilingüe — para comunicarse, conectar y abrirse camino en un mundo global.\n💻 Tecnología — para prepararlo con las herramientas que necesitará hoy y mañana.\n\nEn Colegio Skinner acompañamos cada etapa desde preescolar hasta preparatoria con una formación trilingüe que abre puertas reales 🚀📚.\n\n📩 Conoce nuestro modelo educativo. Envíanos un DM y agenda una cita.\n\n#ColegioSkinner #EducaciónTrilingüe #FormandoLíderes #InnovaciónEducativa #ComunidadSkinner",
+              visuals: {
+                reel: {
+                  coverText: "4 PALABRAS QUE DEFINEN SU FUTURO 🌍✨",
+                  subtitleBadge: "MODELO TRILINGÜE SKINNER",
+                  productionGuide: {
+                    location: "Pasillo exterior frente a lockers azules y rojos → Salón de cómputo (interior) → Biblioteca escolar (interior).",
+                    characters: "2 alumnos de primaria (uno con uniforme de gala azul marino y otro con pants deportivo rojo) + 2 alumnos de secundaria.",
+                    shotStyle: "Plano fijo simétrico para el gancho con gestos sincronizados (señalando texto en pantalla), seguido de cortes secos (jump cuts) en distintos salones.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Frente a los lockers del pasillo, dos niños señalan hacia arriba y hacia un lado al ritmo de 4 golpes musicales.",
+                        dialogue: "Texto y voz: «Trilingüe. Liderazgo. Excelencia. Tecnología. ¡Esto es el Colegio Skinner!»"
+                      },
+                      {
+                        time: "03–11s • Desarrollo en Campus",
+                        action: "4 micro-tomas de 2s: lectura trilingüe en biblioteca, exposición de líder de equipo, laboratorio digital y convivencia.",
+                        dialogue: "Voz en off: «Preparamos a cada alumno para comunicarse en 3 idiomas y dominar las herramientas del mañana.»"
+                      },
+                      {
+                        time: "11–15s • Cierre y CTA",
+                        action: "Los niños hacen el gesto de corazón con las manos mientras entra el escudo CS en pantalla.",
+                        dialogue: "«Conoce nuestro modelo educativo. ¡Mándanos DM y agenda tu cita!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Los 4 Pilares Trilingües",
+                    imagePrompt: "Dos niños estudiantes con uniforme oficial del Colegio Skinner (suéter azul marino y pants deportivo rojo) señalando con entusiasmo hacia bloques tipográficos grandes en blanco y rojo que dicen TRILINGÜE, LIDERAZGO, EXCELENCIA, TECNOLOGÍA.",
+                    overlayText: "TRILINGÜE • LIDERAZGO • EXCELENCIA • TECNOLOGÍA\nEsto es el Colegio Skinner"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Gancho de Valor",
+                    imagePrompt: "Alumnos trabajando con tableta y libros en un aula luminosa del Colegio Skinner.",
+                    overlayText: "EDUCACIÓN TRILINGÜE QUE ABRE PUERTAS AL MUNDO 🌍✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Modelo Integral + CTA",
+                    imagePrompt: "Estudiantes sonrientes de primaria y preparatoria con uniforme azul marino y rojo.",
+                    overlayText: "ESPAÑOL + INGLÉS + FRANCÉS DESDE PREESCOLAR HASTA PREPA UNAM\n📩 Envía DM y agenda tu cita"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Niños señalando las palabras clave sobre fondo arquitectónico del Colegio Skinner.",
+                    overlayText: "4 PALABRAS QUE TRANSFORMAN SU EDUCACIÓN ✨🏫"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Pilar Trilingüe",
+                    imagePrompt: "Alumnos participando activamente en clase de idiomas.",
+                    overlayText: "1. EDUCACIÓN TRILINGÜE 🌍\nEspañol, inglés y francés para conectar en un mundo global."
+                  },
+                  {
+                    slideTitle: "Slide 3 — Tecnología + Excelencia",
+                    imagePrompt: "Estudiantes en el laboratorio de cómputo y pantalla digital.",
+                    overlayText: "2. TECNOLOGÍA Y EXCELENCIA 💻🏆\nHerramientas digitales y alto nivel académico en cada etapa."
+                  },
+                  {
+                    slideTitle: "Slide 4 — Liderazgo + Llamado a la Acción",
+                    imagePrompt: "Jóvenes líderes sonriendo con el escudo del Colegio Skinner.",
+                    overlayText: "3. LIDERAZGO CON VALORES 👑\n📩 Agenda tu visita por DM • Inscripciones Abiertas"
+                  }
+                ]
+              }
+            },
+            {
+              caption: "🚀📚 ¿Por qué elegir una educación trilingüe desde los primeros años?\n\nPorque cuando los niños crecen pensando y comunicándose en español, inglés y francés, desarrollan mayor flexibilidad cognitiva, seguridad y visión internacional 🌍💙.\n\nEn Colegio Skinner integramos:\n🗣️ Formación trilingüe con enfoque práctico\n💻 Tecnología educativa interactiva\n🎓 Continuidad académica hasta Preparatoria incorporada a la UNAM\n\nDale a tus hijos herramientas que los acompañarán toda la vida. ¡Inscripciones abiertas! Escríbenos por DM 📩.\n\n#ColegioSkinner #EscuelaTrilingüe #EducaciónEnMéxico #FuturoBrillante #InscripcionesAbiertas",
+              visuals: {
+                reel: {
+                  coverText: "¿TRES RAZONES PARA ELEGIR COLEGIO SKINNER? 🌍🎓",
+                  subtitleBadge: "ESCUELA TRILINGÜE CDMX",
+                  productionGuide: {
+                    location: "Salón de Preescolar (interior luminoso) → Salón de Primaria (interior) → Patio techado con velaria.",
+                    characters: "1 pequeño de preescolar, 1 alumna de primaria, 1 joven de preparatoria (representando la línea de tiempo) y Leoncio.",
+                    shotStyle: "Transición creativa de 'relevo' (match cut): un alumno pasa un libro/tableta hacia cámara y al destapar aparece el siguiente nivel educativo.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Niño de preescolar en su salón entrega un libro ilustrado hacia el lente de la cámara.",
+                        dialogue: "Voz en off: «Imagina lo que logra un niño cuando crece en un colegio trilingüe desde sus primeros pasos…»"
+                      },
+                      {
+                        time: "03–10s • Desarrollo en Campus",
+                        action: "Alumna de primaria recibe el libro en salón bilingüe y se lo pasa a alumno de Prepa UNAM en el patio.",
+                        dialogue: "«Español, inglés y francés todos los días, tecnología en el aula y pase directo a nuestra Prepa UNAM.»"
+                      },
+                      {
+                        time: "10–15s • Cierre y CTA",
+                        action: "Los tres alumnos juntos junto a Leoncio saludando a cámara.",
+                        dialogue: "«Inscripciones abiertas. ¡Escríbenos por DM y ven a conocernos!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Ventaja Trilingüe",
+                    imagePrompt: "Alumna sonriente de preparatoria Skinner junto a pantalla digital interactiva en el aula, estilo fotográfico editorial nítido con branding azul marino y escudo CS.",
+                    overlayText: "EDUCACIÓN TRILINGÜE QUE ABRE PUERTAS\nDesde Maternal y Preescolar hasta Preparatoria UNAM 🌍🎓"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Beneficio Cognitivo y Global",
+                    imagePrompt: "Niños de preescolar y primaria aprendiendo con dinámicas interactivas en salón iluminado.",
+                    overlayText: "PENSAR Y COMUNICARSE EN 3 IDIOMAS DESDE PEQUEÑOS 🌍🗣️"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Respaldo Skinner + CTA",
+                    imagePrompt: "Estudiantes graduados y Leoncio sonriendo frente al escudo CS.",
+                    overlayText: "40 AÑOS FORMANDO MENTES CREATIVAS\n📩 Conoce nuestras instalaciones • Agenda por DM"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Estudiante con uniforme Skinner sosteniendo libros y tableta con actitud segura.",
+                    overlayText: "LA VENTAJA DE CRECER EN UN COLEGIO TRILINGÜE 🌍✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Español, Inglés y Francés",
+                    imagePrompt: "Clase dinámica de idiomas con participación activa de los alumnos.",
+                    overlayText: "COMUNICACIÓN SIN BARRERAS\nDominio real de 3 idiomas en un entorno cercano."
+                  },
+                  {
+                    slideTitle: "Slide 3 — Innovación en el Aula",
+                    imagePrompt: "Laboratorio de cómputo y pantallas táctiles educativas.",
+                    overlayText: "APRENDIZAJE INTERACTIVO 💻\nTecnología que despierta curiosidad y pensamiento crítico."
+                  },
+                  {
+                    slideTitle: "Slide 4 — CTA",
+                    imagePrompt: "Papás e hijos recorriendo el patio techado del Colegio Skinner.",
+                    overlayText: "EL FUTURO DE TUS HIJOS COMIENZA AQUÍ\n📩 Escríbenos hoy por DM."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+
+        invertir: {
+          label: "Invertir en Educación",
+          angles: {
+            emocional: {
+              what: "La educación es el único regalo que nadie les puede quitar: recuerdos, valores, amigos y preparación para la vida.",
+              who: "Padres de familia que ven la colegiatura no como un gasto, sino como el cimiento emocional y profesional de sus hijos.",
+              how: "Tono reflexivo, cercano y con toque de nostalgia positiva (40 años acompañando familias)."
+            },
+            academico: {
+              what: "Retorno real en formación: Preparatoria incorporada a la UNAM, certificaciones Cambridge y 40 años de prestigio comprobado.",
+              who: "Papás analíticos que buscan solidez institucional, disciplina y pase seguro hacia estudios superiores.",
+              how: "Tono serio, convincente y respaldado por credenciales oficiales."
+            },
+            vivencial: {
+              what: "Cada rincón del colegio —gimnasio, auditorio, laboratorios y aulas— está diseñado para potenciar sus talentos hoy.",
+              who: "Familias que quieren ver instalaciones activas y desarrollo integral (deporte, ciencia, idiomas y liderazgo).",
+              how: "Tono inspirador y tangible, mostrando el valor del entorno diario."
+            }
+          },
+          variations: [
+            {
+              caption: "🎓✨ ¡40 años formando mentes creativas y construyendo futuros!\n\nInvertir en la educación de tus hijos es regalarles las herramientas, los valores y la confianza para llegar tan lejos como sueñen 🚀💙.\n\nEn Colegio Skinner respaldamos tu confianza con:\n🏛️ 40 años de trayectoria educativa en CDMX\n🎓 Preparatoria incorporada a la UNAM\n🌍 Formación trilingüe con certificaciones internacionales\n💻 Tecnología, disciplina y acompañamiento cercano desde preescolar\n\nHaz que su futuro comience hoy. Escríbenos por DM y agenda una visita para conocer nuestras instalaciones 🏫📩.\n\n#ColegioSkinner #40AñosSkinner #PreparatoriaUNAM #ExcelenciaAcadémica #InvertirEnEducación",
+              visuals: {
+                reel: {
+                  coverText: "40 AÑOS CONSTRUYENDO EL FUTURO DE TUS HIJOS 🎓✨",
+                  subtitleBadge: "TRADICIÓN + INNOVACIÓN UNAM",
+                  productionGuide: {
+                    location: "Patio central y escaleras del plantel → Biblioteca (interior) → Salón de Preparatoria con pizarrón inteligente.",
+                    characters: "3 alumnas de secundaria/preparatoria (inspirado en el concepto '¿Y si volviéramos a los 80s?'), docente veterano y Leoncio.",
+                    shotStyle: "Efecto visual 'Antes y Ahora' (transición con chasquido o giro de cámara): estética cálida vintage en patio hacia imagen nítida 4K en aula tecnológica.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "3 alumnas frente al muro del colegio hacen pulgar arriba estilo foto de los años 80 y tras un parpadeo aparecen en aula moderna.",
+                        dialogue: "Voz en off: «40 años después, la tecnología cambió… pero nuestra esencia sigue intacta.»"
+                      },
+                      {
+                        time: "03–11s • Desarrollo en Campus",
+                        action: "Tomas emotivas en biblioteca, laboratorio de ciencias y profesores acompañando de cerca a los estudiantes.",
+                        dialogue: "«Invertir en su educación es darles valores, formación trilingüe y Preparatoria incorporada a la UNAM.»"
+                      },
+                      {
+                        time: "11–15s • Cierre y CTA",
+                        action: "Plano abierto del grupo sonriendo bajo la velaria del patio con el escudo CS.",
+                        dialogue: "«40 años formando mentes creativas. ¡Agenda tu visita por DM!»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Legado de 40 Años",
+                    imagePrompt: "Composición editorial cálida con estética vintage-moderna: familia orgullosa junto a estudiante con birrete y uniforme del Colegio Skinner, badge amarillo 'DESDE HACE ¡40 AÑOS!' y escudo CS.",
+                    overlayText: "NUESTRA COMUNIDAD SKINNER DESDE HACE ¡40 AÑOS!\nLa mejor inversión para su futuro profesional 🎓"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Reflexión para Papás",
+                    imagePrompt: "Retrato emotivo de estudiante concentrado en clase mientras el profesor guía en el pizarrón interactivo.",
+                    overlayText: "LOS GRANDES SUEÑOS NECESITAN UN LUGAR DONDE COMENZAR ✨🎓"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Respaldo Institucional + CTA",
+                    imagePrompt: "Joven graduado con sus papás sonriendo con orgullo en el Colegio Skinner.",
+                    overlayText: "40 AÑOS DE EXCELENCIA • PREPA UNAM • TRILINGÜE\n📩 Agenda tu visita personalizada por DM"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Estudiante de preparatoria mirando hacia el horizonte con confianza en el campus Skinner.",
+                    overlayText: "LA MEJOR INVERSIÓN NO SE GUARDA:\nSE VIVE EN SU EDUCACIÓN 🎓💙"
+                  },
+                  {
+                    slideTitle: "Slide 2 — 40 Años de Experiencia",
+                    imagePrompt: "Imagen estilo retro años 80 comparada con estudiantes actuales en el mismo colegio.",
+                    overlayText: "40 AÑOS FORMANDO GENERACIONES\nLa misma calidez humana, con la tecnología de hoy. ✨"
+                  },
+                  {
+                    slideTitle: "Slide 3 — Preparación Universitaria UNAM",
+                    imagePrompt: "Alumnos de preparatoria trabajando en laboratorio de ciencias y cómputo.",
+                    overlayText: "PREPARATORIA INCORPORADA A LA UNAM\nDisciplina, pensamiento crítico y nivel académico superior."
+                  },
+                  {
+                    slideTitle: "Slide 4 — Cierre e Invitación",
+                    imagePrompt: "Familia recibiendo informes y recorriendo las instalaciones del Colegio Skinner.",
+                    overlayText: "CONSTRUYE HOY SU MAÑANA\n📩 Escríbenos por DM y conoce Colegio Skinner."
+                  }
+                ]
+              }
+            },
+            {
+              caption: "🏫💙 Hay lugares que se convierten en mucho más que una escuela… se convierten en comunidad, en valores y en el impulso que define su futuro.\n\nEn Colegio Skinner cada espacio —desde nuestras aulas interactivas y laboratorio de cómputo hasta el gimnasio, biblioteca y auditorio— está pensado para que nuestros alumnos aprendan, exploren y desarrollen todo su potencial 🧠🚀.\n\nInvertir en su formación hoy es asegurarles preparación, disciplina y excelencia para mañana 🎓✨.\n\n📩 ¡Inscripciones abiertas! Contáctanos por DM y ven a vivir la experiencia Skinner.\n\n#ColegioSkinner #LíderesDelMañana #EducaciónDeExcelencia #ComunidadSkinner #InscripcionesAbiertas",
+              visuals: {
+                reel: {
+                  coverText: "LOS LÍDERES DEL MAÑANA SE FORMAN HOY 🚀🎓",
+                  subtitleBadge: "CONOCE NUESTRAS INSTALACIONES",
+                  productionGuide: {
+                    location: "Gimnasio / Cancha de básquetbol (interior) → Laboratorio de cómputo (interior) → Área de Maternal/Preescolar.",
+                    characters: "Alumna entrando a cancha con trenzas (toma de espalda épica), equipo jugando básquetbol, alumnos en cómputo y Leoncio encestando.",
+                    shotStyle: "Contra-picado épico en movimiento siguiendo a la alumna hacia la cancha, cortes dinámicos al bote del balón y cierre divertido con Leoncio.",
+                    script: [
+                      {
+                        time: "00–03s • Gancho (Hook)",
+                        action: "Cámara baja sigue por detrás a una alumna entrando decidida a la cancha techada del gimnasio.",
+                        dialogue: "Voz en off: «Los líderes del mañana necesitan hoy un lugar donde descubrir de qué son capaces.»"
+                      },
+                      {
+                        time: "03–10s • Desarrollo en Campus",
+                        action: "Montaje ágil de deporte en el gimnasio, concentración en el laboratorio de cómputo y juego en Maternal.",
+                        dialogue: "«Cada rincón del Colegio Skinner está diseñado para impulsar su talento, disciplina y excelencia.»"
+                      },
+                      {
+                        time: "10–15s • Cierre y CTA",
+                        action: "Leoncio intenta una clavada en el aro de básquet y festeja apuntando a la cámara.",
+                        dialogue: "«¡Inscripciones abiertas! Mándanos DM y recorre nuestras instalaciones.»"
+                      }
+                    ]
+                  }
+                },
+                post: [
+                  {
+                    slideTitle: "Post Único — Espacios que Inspiran",
+                    imagePrompt: "Fotografía dinámica de estudiantes en el gimnasio y aulas modernas del Colegio Skinner con tipografía audaz en blanco y rojo 'LOS LÍDERES DEL MAÑANA'.",
+                    overlayText: "LOS LÍDERES DEL MAÑANA NECESITAN EL MEJOR LUGAR HOY\nPreparación • Disciplina • Excelencia | Colegio Skinner"
+                  }
+                ],
+                carrusel2: [
+                  {
+                    slideTitle: "Slide 1 — Gancho",
+                    imagePrompt: "Alumna mirando hacia arriba con sonrisa inspiradora y uniforme azul marino/rojo.",
+                    overlayText: "PREPARACIÓN, DISCIPLINA Y EXCELENCIA 🎓✨"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Instalaciones y Comunidad + CTA",
+                    imagePrompt: "Mosaico limpio de gimnasio, laboratorio de cómputo y biblioteca escolar con alumnos activos.",
+                    overlayText: "CADA ESPACIO IMPULSA SU TALENTO\n📩 Agenda tu visita por DM • Inscripciones Abiertas"
+                  }
+                ],
+                carrusel4: [
+                  {
+                    slideTitle: "Slide 1 — Portada",
+                    imagePrompt: "Estudiante de preparatoria frente al micrófono en ceremonia académica con birrete.",
+                    overlayText: "EL CAMINO AL ÉXITO COMIENZA CON UNA GRAN PREPARACIÓN 🎓"
+                  },
+                  {
+                    slideTitle: "Slide 2 — Infraestructura Integral",
+                    imagePrompt: "Vista del laboratorio de cómputo y aulas digitales del Colegio Skinner.",
+                    overlayText: "ESPACIOS PENSADOS PARA APRENDER\nAulas interactivas, laboratorios, biblioteca y gimnasio."
+                  },
+                  {
+                    slideTitle: "Slide 3 — Formación Trilingüe y UNAM",
+                    imagePrompt: "Alumnos trabajando en equipo con libros en inglés, francés y español.",
+                    overlayText: "VISIÓN GLOBAL Y UNIVERSITARIA\nTrilingüe + Preparatoria incorporada a la UNAM. 🌍"
+                  },
+                  {
+                    slideTitle: "Slide 4 — CTA",
+                    imagePrompt: "Escudo CS sobre fotografía cálida de bienvenida en la entrada del colegio.",
+                    overlayText: "DA EL SIGUIENTE PASO POR SU FUTURO\n📩 Envía DM y agenda tu visita hoy."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      };
+
+      // Estado determinista de la aplicación
+      const appState = {
+        topic: 'inscripciones',
+        format: 'reel',
+        angle: 'emocional',
+        variationIndex: 0
+      };
+
+      let toastTimer = null;
+      let blendTimer = null;
+
+      // Helper seguro para escapar HTML
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // Notificación Toast (cero alert())
+      function showToast(message) {
+        const toastNotification = document.getElementById('toast-notification');
+        const toastText = document.getElementById('toast-text');
+        if (!toastNotification || !toastText) return;
+
+        toastText.textContent = message;
+        toastNotification.classList.remove('hidden');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastNotification.classList.add('hidden');
+        }, 2600);
+      }
+
+      // Copiado al portapapeles con fallback garantizado para móviles e iframes
+      function copyToClipboard(text, successMsg) {
+        try {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.top = '0';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+          textarea.setSelectionRange(0, textarea.value.length);
+          const ok = document.execCommand('copy');
+          document.body.removeChild(textarea);
+
+          if (ok) {
+            showToast(successMsg);
+            return;
+          }
+        } catch (err) {
+          // Continuar al fallback moderno
+        }
+
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(text)
+            .then(() => showToast(successMsg))
+            .catch(() => showToast('Selecciona el texto y cópialo manualmente.'));
+        } else {
+          showToast('Selecciona el texto y cópialo manualmente.');
+        }
+      }
+
+      // Obtención segura de la receta actual
+      function getCurrentData() {
+        const recipeData = SKINNER_RECIPES[appState.topic] || SKINNER_RECIPES.inscripciones;
+        const angleData = recipeData.angles[appState.angle] || recipeData.angles.emocional;
+        const safeIndex = appState.variationIndex % recipeData.variations.length;
+        const currentVar = recipeData.variations[safeIndex];
+        return { recipeData, angleData, currentVar, safeIndex };
+      }
+
+      // Animación controlada sin condiciones de carrera
+      function triggerBlendAnimation(advanceVariation) {
+        const blendBtn = document.getElementById('blend-btn');
+        const blenderIcon = document.getElementById('blender-icon');
+        const blenderBtnText = document.getElementById('blender-btn-text');
+        const blenderStatus = document.getElementById('blender-status');
+
+        if (blendTimer) {
+          clearTimeout(blendTimer);
+          blendTimer = null;
+        }
+
+        const messages = [
+          "🌪️ Licuando 40 años de historia + Prepa UNAM...",
+          "🦁 Agregando un toque de Leoncio y certificaciones Cambridge...",
+          "✨ Revolviendo pilares trilingües y tecnología educativa..."
+        ];
+
+        if (blendBtn) blendBtn.disabled = true;
+        if (blenderIcon) blenderIcon.classList.add('animate-blender');
+        if (blenderBtnText) blenderBtnText.textContent = "LICUANDO INGREDIENTES...";
+        if (blenderStatus) blenderStatus.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+        blendTimer = setTimeout(() => {
+          if (advanceVariation) {
+            const { recipeData } = getCurrentData();
+            appState.variationIndex = (appState.variationIndex + 1) % recipeData.variations.length;
+          }
+          renderResults(true);
+
+          if (blendBtn) blendBtn.disabled = false;
+          if (blenderIcon) blenderIcon.classList.remove('animate-blender');
+          if (blenderBtnText) blenderBtnText.textContent = "¡LICUAR Y MEZCLAR COPY MÁGICO!";
+          if (blenderStatus) blenderStatus.textContent = "✅ ¡Mezcla lista! Puedes copiarla o volver a licuar otra variante.";
+          blendTimer = null;
+        }, 420);
+      }
+
+      // Renderizado completo de la receta generada
+      function renderResults(animate) {
+        const { recipeData, angleData, currentVar, safeIndex } = getCurrentData();
+
+        const anatomyWhat = document.getElementById('anatomy-what');
+        const anatomyWho = document.getElementById('anatomy-who');
+        const anatomyHow = document.getElementById('anatomy-how');
+        const generatedCopyText = document.getElementById('generated-copy-text');
+        const variationBadge = document.getElementById('variation-badge');
+        const visualFormatBadge = document.getElementById('visual-format-badge');
+        const visualGuideContainer = document.getElementById('visual-guide-container');
+
+        if (!visualGuideContainer) return;
+
+        // 1. Anatomía de la mezcla
+        if (anatomyWhat) anatomyWhat.textContent = angleData.what;
+        if (anatomyWho) anatomyWho.textContent = angleData.who;
+        if (anatomyHow) anatomyHow.textContent = angleData.how;
+
+        // 2. Copy listo para publicar
+        if (generatedCopyText) generatedCopyText.textContent = currentVar.caption;
+        if (variationBadge) variationBadge.textContent = `${recipeData.label} • Variante #${safeIndex + 1}`;
+
+        // 3. Guía Visual según formato seleccionado
+        visualGuideContainer.innerHTML = '';
+
+        if (appState.format === 'reel') {
+          if (visualFormatBadge) {
+            visualFormatBadge.textContent = '🎬 Guía Visual + Rodaje en Sitio: Reel';
+          }
+          const reel = currentVar.visuals.reel;
+          const guide = reel.productionGuide;
+
+          const scriptHtml = guide.script.map(step => `
+            <div class="bg-white border-2 border-[#3A2618] rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-start gap-3">
+              <span class="bg-[#E9F75E] border border-[#3A2618] text-[#3A2618] font-display font-black text-[11px] px-2.5 py-1 rounded-lg shrink-0 self-start">
+                ${escapeHtml(step.time)}
+              </span>
+              <div class="space-y-1 text-xs sm:text-sm">
+                <p class="text-[#3A2618]/85"><strong class="text-[#3A2618]">Acción en cámara:</strong> ${escapeHtml(step.action)}</p>
+                <p class="text-[#16305C] font-bold bg-[#C8D7F5]/45 px-2.5 py-1 rounded-lg">🎙️ ${escapeHtml(step.dialogue)}</p>
+              </div>
+            </div>
+          `).join('');
+
+          visualGuideContainer.innerHTML = `
+            <div class="space-y-4 ${animate ? 'animate-pop-in' : ''}">
+              <!-- Tarjeta 1: Portada del Reel -->
+              <div class="bg-[#16305C] text-white border-[2.5px] border-[#3A2618] rounded-2xl p-5 sm:p-6 shadow-[4px_4px_0px_#3A2618]">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span class="bg-[#E9F75E] text-[#3A2618] font-display font-black text-[11px] uppercase px-3 py-1 rounded-full">
+                    1. Texto Sugerido para la Portada del Reel
+                  </span>
+                  <span class="text-xs font-bold text-white/80">Formato Vertical 9:16 • Escudo CS</span>
+                </div>
+
+                <div class="bg-white/10 border-2 border-dashed border-[#E9F75E] rounded-xl p-4 my-2 text-center">
+                  <p class="text-[11px] uppercase tracking-wider font-extrabold text-[#E9F75E] mb-1">${escapeHtml(reel.subtitleBadge)}</p>
+                  <p class="font-display font-black text-xl sm:text-2xl text-white tracking-tight">
+                    "${escapeHtml(reel.coverText)}"
+                  </p>
+                </div>
+              </div>
+
+              <!-- Tarjeta 2: Plan de Rodaje para Agencia en Instalaciones Skinner -->
+              <div class="bg-[#FAF6EE] border-[2.5px] border-[#3A2618] rounded-2xl p-5 sm:p-6 shadow-[4px_4px_0px_#3A2618]">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b-2 border-dashed border-[#3A2618]/20">
+                  <span class="bg-[#DE6834] text-white border-2 border-[#3A2618] font-display font-black text-xs uppercase px-3.5 py-1 rounded-full">
+                    🎥 2. Qué grabar en instalaciones de Colegio Skinner
+                  </span>
+                  <span class="text-xs font-extrabold text-[#3A2618]/75">Hoja de Llamado • Agencia</span>
+                </div>
+
+                <!-- Ficha técnica de rodaje (Locación, Personajes, Estilo de Toma) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+                  <div class="bg-white border-2 border-[#3A2618] rounded-xl p-3.5">
+                    <p class="text-[11px] font-black uppercase text-[#DE6834] mb-1">📍 Locación en Campus</p>
+                    <p class="text-xs sm:text-[13px] text-[#3A2618] font-medium leading-relaxed">${escapeHtml(guide.location)}</p>
+                  </div>
+
+                  <div class="bg-white border-2 border-[#3A2618] rounded-xl p-3.5">
+                    <p class="text-[11px] font-black uppercase text-[#16305C] mb-1">🎭 Personajes Involucrados</p>
+                    <p class="text-xs sm:text-[13px] text-[#3A2618] font-medium leading-relaxed">${escapeHtml(guide.characters)}</p>
+                  </div>
+
+                  <div class="bg-white border-2 border-[#3A2618] rounded-xl p-3.5">
+                    <p class="text-[11px] font-black uppercase text-[#B28524] mb-1">🎥 Estilo de Toma y Cámara</p>
+                    <p class="text-xs sm:text-[13px] text-[#3A2618] font-medium leading-relaxed">${escapeHtml(guide.shotStyle)}</p>
+                  </div>
+                </div>
+
+                <!-- Guión sugerido escena por escena -->
+                <div>
+                  <p class="text-xs font-black uppercase tracking-wide text-[#3A2618] mb-2.5 flex items-center gap-1.5">
+                    <span>📝</span>
+                    <span>Guión sugerido escena por escena (15 segundos):</span>
+                  </p>
+                  <div class="space-y-2.5">
+                    ${scriptHtml}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          const formatLabels = {
+            post: '📸 Guía Visual: Post Simple (1 Imagen)',
+            carrusel2: '🖼️ Guía Visual: Carrusel de 2 Imágenes',
+            carrusel4: '🎞️ Guía Visual: Carrusel de 4 Imágenes'
+          };
+          if (visualFormatBadge) {
+            visualFormatBadge.textContent = formatLabels[appState.format] || '📸 Guía Visual';
+          }
+
+          const slides = currentVar.visuals[appState.format] || currentVar.visuals.post;
+          const gridClass = slides.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2';
+
+          const cardsHtml = slides.map((slide, idx) => `
+            <div class="bg-[#FAF6EE] border-[2.5px] border-[#3A2618] rounded-2xl p-4 sm:p-5 flex flex-col justify-between ${animate ? 'animate-pop-in' : ''}" style="animation-delay: ${idx * 70}ms">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                  <span class="bg-[#3A2618] text-[#E9F75E] font-display font-black text-xs px-3 py-1 rounded-full">
+                    ${escapeHtml(slide.slideTitle)}
+                  </span>
+                  <span class="text-xs font-extrabold text-[#DE6834]">Lámina ${idx + 1}/${slides.length}</span>
+                </div>
+
+                <!-- Qué imagen generar / fotografiar -->
+                <div class="mb-3.5">
+                  <p class="text-[11px] font-extrabold uppercase tracking-wider text-[#3A2618]/65 mb-1">
+                    🎨 Qué imagen generar / fotografiar:
+                  </p>
+                  <p class="text-xs sm:text-sm text-[#3A2618] leading-relaxed bg-white p-3 rounded-xl border border-[#3A2618]/20">
+                    ${escapeHtml(slide.imagePrompt)}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Qué texto poner en la imagen -->
+              <div>
+                <p class="text-[11px] font-extrabold uppercase tracking-wider text-[#16305C] mb-1">
+                  🔤 Texto exacto para poner dentro de la imagen:
+                </p>
+                <div class="bg-[#16305C] text-white p-3.5 rounded-xl border-2 border-[#3A2618] font-display font-extrabold text-xs sm:text-sm whitespace-pre-line leading-snug">
+                  ${escapeHtml(slide.overlayText)}
+                </div>
+              </div>
+            </div>
+          `).join('');
+
+          visualGuideContainer.innerHTML = `<div class="grid ${gridClass} gap-4">${cardsHtml}</div>`;
+        }
+      }
+
+      // Inicialización segura de eventos al cargar el DOM
+      function initApp() {
+        const topicButtons = document.querySelectorAll('#topic-selector .retro-option-card');
+        const formatButtons = document.querySelectorAll('#format-selector .retro-format-pill');
+        const angleButtons = document.querySelectorAll('#angle-selector .retro-angle-pill');
+        const blendBtn = document.getElementById('blend-btn');
+        const remixBtn = document.getElementById('remix-btn');
+        const copyCaptionBtn = document.getElementById('copy-caption-btn');
+        const copyAllBtn = document.getElementById('copy-all-btn');
+
+        // Selección de Tema
+        topicButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            topicButtons.forEach(b => {
+              b.classList.remove('selected');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('selected');
+            btn.setAttribute('aria-pressed', 'true');
+            appState.topic = btn.dataset.topic || 'inscripciones';
+            appState.variationIndex = 0;
+            triggerBlendAnimation(false);
+          });
+        });
+
+        // Selección de Formato
+        formatButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            formatButtons.forEach(b => {
+              b.classList.remove('selected');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('selected');
+            btn.setAttribute('aria-pressed', 'true');
+            appState.format = btn.dataset.format || 'reel';
+            renderResults(true);
+          });
+        });
+
+        // Selección de Ángulo
+        angleButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            angleButtons.forEach(b => {
+              b.classList.remove('selected');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('selected');
+            btn.setAttribute('aria-pressed', 'true');
+            appState.angle = btn.dataset.angle || 'emocional';
+            renderResults(true);
+          });
+        });
+
+        // Botón Principal Licuar
+        if (blendBtn) {
+          blendBtn.addEventListener('click', () => {
+            triggerBlendAnimation(true);
+          });
+        }
+
+        // Botón Volver a licuar (siguiente variación)
+        if (remixBtn) {
+          remixBtn.addEventListener('click', () => {
+            triggerBlendAnimation(true);
+          });
+        }
+
+        // Copiar solo el Copy
+        if (copyCaptionBtn) {
+          copyCaptionBtn.addEventListener('click', () => {
+            const { currentVar } = getCurrentData();
+            copyToClipboard(currentVar.caption, '¡Copy de Colegio Skinner copiado!');
+          });
+        }
+
+        // Copiar Todo (Copy + Guía Visual / Rodaje)
+        if (copyAllBtn) {
+          copyAllBtn.addEventListener('click', () => {
+            const { recipeData, currentVar } = getCurrentData();
+            const badgeEl = document.getElementById('visual-format-badge');
+            const badgeLabel = badgeEl ? badgeEl.textContent : appState.format.toUpperCase();
+
+            let fullText = `=== MEZCLA COLEGIO SKINNER (${recipeData.label.toUpperCase()}) ===\n\n`;
+            fullText += `📝 COPY PARA PUBLICAR:\n${currentVar.caption}\n\n`;
+            fullText += `🎨 GUÍA VISUAL (${badgeLabel}):\n`;
+
+            if (appState.format === 'reel') {
+              const reel = currentVar.visuals.reel;
+              const g = reel.productionGuide;
+              fullText += `• Texto Portada Reel: "${reel.coverText}" (${reel.subtitleBadge})\n\n`;
+              fullText += `🎥 QUÉ GRABAR EN INSTALACIONES SKINNER:\n`;
+              fullText += `• Locación: ${g.location}\n`;
+              fullText += `• Personajes: ${g.characters}\n`;
+              fullText += `• Estilo de toma: ${g.shotStyle}\n`;
+              fullText += `• Guión sugerido:\n`;
+              g.script.forEach(s => {
+                fullText += `  [${s.time}] Acción: ${s.action} | Audio/Texto: ${s.dialogue}\n`;
+              });
+            } else {
+              const slides = currentVar.visuals[appState.format] || currentVar.visuals.post;
+              slides.forEach(s => {
+                fullText += `\n[${s.slideTitle}]\n- Imagen: ${s.imagePrompt}\n- Texto en imagen: ${s.overlayText.replace(/\n/g, ' | ')}\n`;
+              });
+            }
+
+            copyToClipboard(fullText, '¡Copy + Guía completa copiados!');
+          });
+        }
+
+        // Render inicial inmediato
+        renderResults(false);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>
